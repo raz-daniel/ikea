@@ -1,12 +1,10 @@
 import { AllowNull, Column, DataType, Default, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript";
-import Product from "./product";
-
+import Furniture from "./furniture";
 
 @Table({
     underscored: true
 })
-
-export default class Category extends Model {
+export default class Type extends Model {
 
     @PrimaryKey
     @Default(DataType.UUIDV4)
@@ -17,6 +15,7 @@ export default class Category extends Model {
     @Column
     name: string
 
-    @HasMany(() => Product)
-    products: Product[]
+    @HasMany(() => Furniture)
+    furnitures: Furniture[]
+
 }
