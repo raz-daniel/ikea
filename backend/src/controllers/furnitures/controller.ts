@@ -2,8 +2,16 @@ import { NextFunction, Response, Request } from "express";
 import Furniture from "../../model/furniture";
 import Type from "../../model/type";
 
-export function getTotalFurnitures(req: Request, res: Response, next: NextFunction) {
-
+export async function getTotalFurnitures(req: Request, res: Response, next: NextFunction) {
+    try {
+        const types = await Type.findAll({
+            include: [Furniture]
+        })
+        res.json(types)
+    } catch (error) {
+        next(error)
+    }
+    
 }
 
 export async function getAllFromType(req: Request<{ typeId: string }>, res: Response, next: NextFunction) {

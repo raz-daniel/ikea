@@ -4,33 +4,30 @@ import sequelize from "./db/sequelize"
 import errorLogger from "./middlewares/error/error-logger"
 import errorResponder from "./middlewares/error/error-responder"
 import notFound from "./middlewares/not-found"
-
 import cors from 'cors'
-import categoriesRouter from "./routers/categoriesRouter"
-import productRouter from "./routers/productsRouter"
+import typesRouter from "./routers/types"
+import furnitureRouter from "./routers/furnitures"
 
 const port = config.get<string>('app.port')
 const name = config.get<string>('app.name')
 const force = config.get<boolean>('sequelize.sync.force')
 
-
 const app = express();
-
 
 (async () => {
     try {
         console.log('Trying to Connect to Database')
-        await sequelize.sync()
+        await sequelize.sync({ force })
         console.log('Database logged in successfully')
 
         app.use(cors())
-    
+
         app.use(json())
 
-        app.use('/categories', categoriesRouter)
-        app.use('/products', productRouter)
+        app.use('/types', typesRouter)
+        app.use('/furniture', furnitureRouter)
 
-    
+
         app.use(notFound)
 
         app.use(errorLogger)

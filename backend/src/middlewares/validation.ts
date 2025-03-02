@@ -7,7 +7,7 @@ export default function validation(validator: ObjectSchema) {
 
     return async function (req: Request, res: Response, next: NextFunction) {
         try {
-            req.body = await validator.validateAsync(req.body) //the first req.body is for transformation and not validation
+            req.body = await validator.validateAsync(req.body)
             next()
         } catch (error) {
             console.error('validation error:', error)
