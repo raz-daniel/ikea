@@ -16,7 +16,7 @@ export default class Furniture extends Model {
     dimensions: string
 
     @AllowNull(false)
-    @Column(DataType.DATE)
+    @Column
     color: string
 
     @AllowNull(false)
