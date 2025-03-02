@@ -1,0 +1,19 @@
+{
+    "app": {
+        "port": "3000",
+        "name": "IKEA"
+    },
+    "db": {
+        "host": "localhost",
+        "port": 3306,
+        "username": "root",
+        "password": "",
+        "database": "ikea"
+    },
+    "sequelize": {
+        "logging": true,
+        "sync": {
+            "force": false
+        }
+    }
+}
