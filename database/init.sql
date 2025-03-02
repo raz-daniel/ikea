@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Mar 02, 2025 at 07:42 AM
+-- Generation Time: Mar 02, 2025 at 09:58 PM
 -- Server version: 9.2.0
 -- PHP Version: 8.2.27
 
@@ -18,85 +18,86 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ampm`
+-- Database: `ikea`
 --
-CREATE DATABASE IF NOT EXISTS `ampm` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `ampm`;
+CREATE DATABASE IF NOT EXISTS `ikea` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `ikea`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Table structure for table `furniture`
 --
 
-CREATE TABLE `categories` (
+CREATE TABLE `furniture` (
   `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-('5f5a901c-f739-11ef-b5a3-0242ac110002', 'Beverages', '2025-03-02 07:37:27', '2025-03-02 07:37:27'),
-('74883bbb-f739-11ef-b5a3-0242ac110002', 'Dairy', '2025-03-02 07:39:07', '2025-03-02 07:39:07'),
-('74884e28-f739-11ef-b5a3-0242ac110002', 'Meat', '2025-03-02 07:39:07', '2025-03-02 07:39:07');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
---
-
-CREATE TABLE `products` (
-  `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `production_time` datetime NOT NULL,
-  `expiration_time` datetime NOT NULL,
-  `category_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `dimensions` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(10,0) NOT NULL,
+  `type_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- Dumping data for table `furniture`
 --
 
-INSERT INTO `products` (`id`, `name`, `production_time`, `expiration_time`, `category_id`, `price`, `created_at`, `updated_at`) VALUES
-('b9035fe4-f739-11ef-b5a3-0242ac110002', 'Coca Cola', '2025-03-02 07:39:57', '2025-03-02 07:39:57', '5f5a901c-f739-11ef-b5a3-0242ac110002', 8, '2025-03-02 07:39:57', '2025-03-02 07:39:57'),
-('b90376cc-f739-11ef-b5a3-0242ac110002', 'Martini Bianco', '2025-03-02 07:39:57', '2025-03-02 07:39:57', '5f5a901c-f739-11ef-b5a3-0242ac110002', 28, '2025-03-02 07:39:57', '2025-03-02 07:39:57'),
-('b9038ae1-f739-11ef-b5a3-0242ac110002', 'Danone Straberry', '2025-03-02 07:39:57', '2025-03-02 07:39:57', '74883bbb-f739-11ef-b5a3-0242ac110002', 15, '2025-03-02 07:39:57', '2025-03-02 07:39:57');
+INSERT INTO `furniture` (`id`, `dimensions`, `color`, `price`, `type_id`, `created_at`, `updated_at`) VALUES
+('bab92e54-f7b0-11ef-92b3-0242ac110002', '120 x 80 x 30', 'White', 80, '233a1380-f7b0-11ef-92b3-0242ac110002', '2025-03-02 21:53:09', '2025-03-02 21:53:09'),
+('c6a0958d-f7b0-11ef-92b3-0242ac110002', '50 x 30 x 100', 'Brown Wood', 57, '23375ac7-f7b0-11ef-92b3-0242ac110002', '2025-03-02 21:53:29', '2025-03-02 21:53:29'),
+('c6a0df33-f7b0-11ef-92b3-0242ac110002', '60 x 40 x 90', 'Green', 60, '23375ac7-f7b0-11ef-92b3-0242ac110002', '2025-03-02 21:53:29', '2025-03-02 21:53:29'),
+('c6a0e599-f7b0-11ef-92b3-0242ac110002', '70 x 50 x 85', 'Blue', 40, '23375ac7-f7b0-11ef-92b3-0242ac110002', '2025-03-02 21:53:29', '2025-03-02 21:53:29'),
+('c6a0e6bd-f7b0-11ef-92b3-0242ac110002', '65 x 35 x 95', 'Red', 100, '23375ac7-f7b0-11ef-92b3-0242ac110002', '2025-03-02 21:53:29', '2025-03-02 21:53:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `types`
+--
+
+CREATE TABLE `types` (
+  `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `types`
+--
+
+INSERT INTO `types` (`id`, `name`, `created_at`, `updated_at`) VALUES
+('23375ac7-f7b0-11ef-92b3-0242ac110002', 'Chair', '2025-03-02 21:48:54', '2025-03-02 21:48:54'),
+('233a1380-f7b0-11ef-92b3-0242ac110002', 'Table', '2025-03-02 21:48:54', '2025-03-02 21:48:54'),
+('233a4795-f7b0-11ef-92b3-0242ac110002', 'Sofa', '2025-03-02 21:48:54', '2025-03-02 21:48:54');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `categories`
+-- Indexes for table `furniture`
 --
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `furniture`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type_id` (`type_id`);
 
 --
--- Indexes for table `products`
+-- Indexes for table `types`
 --
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`);
+ALTER TABLE `types`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `products`
+-- Constraints for table `furniture`
 --
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON UPDATE CASCADE;
+ALTER TABLE `furniture`
+  ADD CONSTRAINT `furniture_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
