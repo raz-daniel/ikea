@@ -9,8 +9,8 @@ export default function Header(): JSX.Element {
             
             <div>
                 <nav>
-                    <NavLink to="products/list">list</NavLink>
-                    <NavLink to="products/add">product</NavLink>
+                    <NavLink to="furniture">Furniture List</NavLink>
+                    <NavLink to="add-furniture">Add Furniture</NavLink>
                 </nav>
             </div>
 
