@@ -4,10 +4,10 @@ import Type from "../../model/type";
 
 export async function getTotalFurnitures(req: Request, res: Response, next: NextFunction) {
     try {
-        const types = await Type.findAll({
-            include: [Furniture]
+        const furnitures = await Furniture.findAll({
+            include: [Type]
         })
-        res.json(types)
+        res.json(furnitures)
     } catch (error) {
         next(error)
     }

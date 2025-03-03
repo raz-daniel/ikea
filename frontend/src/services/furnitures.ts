@@ -23,7 +23,6 @@ class Furnitures {
         const response = await axios.delete<boolean>(`${import.meta.env.VITE_REST_SERVER_URL}/furniture/${id}`)
         return response.data
     }
-
 }
 
 const furnitureServices = new Furnitures()

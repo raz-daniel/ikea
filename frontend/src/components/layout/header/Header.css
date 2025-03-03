@@ -1,4 +1,4 @@
-.Header {
+/* .Header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,4 +27,37 @@
 
 .Header button:hover {
     cursor: pointer;
-}
+} */
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .Header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .Header nav {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .Header a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .Header a:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+  
+  .Header a.active {
+    background-color: rgba(255,255,255,0.2);
+    font-weight: bold;
+  }
